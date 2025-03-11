@@ -15,4 +15,7 @@ public interface IMascotaRepository extends JpaRepository<Mascota, Long>{
     @Query("SELECT m FROM Mascota m WHERE LOWER(m.especie) = LOWER(:especie) AND LOWER(m.raza) = LOWER(:raza)")
     List<Mascota> findByEspecieAndRaza(@Param("especie") String especie, @Param("raza") String raza);
     
+    @Query("SELECT m FROM Mascota m WHERE m.dueño.id_dueño = :idDueño")
+    List<Mascota> findByIdDueño(@Param("idDueño") Long idDueño);
+    
 }

@@ -4,6 +4,8 @@ package com.clinicaveterinaria.Veterinaria.service;
 import com.clinicaveterinaria.Veterinaria.model.Dueño;
 import com.clinicaveterinaria.Veterinaria.model.Mascota;
 import com.clinicaveterinaria.Veterinaria.repository.IDueñoRepository;
+import com.clinicaveterinaria.Veterinaria.repository.IMascotaRepository;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class DueñoService implements IDueñoService{
     @Autowired
-    IDueñoRepository dueñoRepo;    
+    IDueñoRepository dueñoRepo; 
+    @Autowired
+    IMascotaRepository mascoRepo;
 
     @Override
     public void crearDueño(Dueño dueño) {
@@ -41,7 +45,8 @@ public class DueñoService implements IDueñoService{
 
     @Override
     public List<Mascota> traerListaMascotas(Long id_dueño) {
-            return dueñoRepo.findById(id_dueño).map(Dueño::getListaMascotas).orElse(Collections.emptyList()); 
+        List <Mascota> listaMascotas = mascoRepo.findByIdDueño(id_dueño);       
+            return listaMascotas; 
     
 }
 }

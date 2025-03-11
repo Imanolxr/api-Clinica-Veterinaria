@@ -19,8 +19,8 @@ public class MascotaService implements IMascotaService{
     }
 
     @Override
-    public void borrarMascota(Mascota masco) {
-        mascoRepo.delete(masco);
+    public void borrarMascota(Long id) {
+        mascoRepo.deleteById(id);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MascotaService implements IMascotaService{
 
     @Override
     public List<Mascota> busquedaMascota(String especie, String raza) {
-        return mascoRepo.findByEspecieAndRaza(especie, raza);
+        return mascoRepo.findByEspecieAndRaza(raza, especie);
     }
     
 }

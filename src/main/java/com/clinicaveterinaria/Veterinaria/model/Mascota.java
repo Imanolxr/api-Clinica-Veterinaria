@@ -1,6 +1,7 @@
 
 package com.clinicaveterinaria.Veterinaria.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Mascota {
     private String color;
     @ManyToOne
     @JoinColumn(name = "id_dueño", referencedColumnName = "id_dueño")
+    @JsonBackReference
     private Dueño dueño;
 
     public Mascota() {

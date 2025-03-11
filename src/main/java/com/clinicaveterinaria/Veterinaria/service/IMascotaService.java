@@ -11,7 +11,7 @@ public interface IMascotaService {
     public void crearMascota(Mascota masco);
     
     //baja Mascota
-    public void borrarMascota(Mascota masco);
+    public void borrarMascota(Long id);
     
     // lectura 1 mascota
     public Mascota traerMascota(Long id_mascota);
